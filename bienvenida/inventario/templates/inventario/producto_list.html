@@ -1,0 +1,43 @@
+{% extends 'inventario/base.html' %}
+
+{% block title %} 
+  vista Productos 
+{% endblock %}
+
+{% block header %} 
+<header class="flex gap-6">
+    <h1>Lista de Productos</h1>
+    <a class="underline" href="{% url 'producto_create'%}">Agregar producto</a>
+</header>
+ 
+{% endblock %}
+
+{% block breadcrumb %}
+ <a href="/inventario/Productos">/inventario/Productos</a>
+{% endblock %}
+
+{% block content %}
+<section class="p-8 gap-4 flex flex-col w-full">
+    <h2 class="text-lg">productos disponibles</h2>
+    <p>Aqui tenemos las mejores frutas del mercado</p>
+    <ul class="border p-4 flex flex-col gap-2 bg-gray-200">
+        {% for producto in object_list %}
+        <li class="flex flex-row gap-1 border p-2 bg-white shadow">
+            <span>{{producto.nombre }}</span>
+            <span>{{producto.precio}}</span>
+            <span>{{producto.descripcion}}</span>
+            <span>{{producto.stock}}</span>
+        
+
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
+{% block footer%}
+    <footer>
+        <span>Derechos reservados &copy; 2024</span>
+    </footer>   
+{% endblock %}
+
+
